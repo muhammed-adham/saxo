@@ -10,7 +10,8 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+            background: #1a1a1a;
             min-height: 100vh;
         }
         
@@ -24,7 +25,8 @@
         }
         
         .header {
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            /* background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%); */
+            background-color: #010101;
             color: white;
             padding: 30px;
             text-align: center;
@@ -95,15 +97,17 @@
             margin-top: 20px;
         }
         
-        .summary-card {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
-            color: white;
+        .summary-card{
+            /* background: linear-gradient(135deg, #e74c3c, #c0392b); */
+            background:#010101 ;
+            color: #eb1000;
             padding: 20px;
             border-radius: 10px;
             text-align: center;
         }
         
         .summary-card h4 {
+            color: white;
             margin: 0 0 10px 0;
             font-size: 1.1em;
         }
@@ -129,7 +133,8 @@
         }
         
         th {
-            background: linear-gradient(135deg, #34495e, #2c3e50);
+            /* background: linear-gradient(135deg, #34495e, #2c3e50); */
+            background: #010101;
             color: white;
             padding: 15px;
             text-align: center;
@@ -137,6 +142,7 @@
             z-index: 2;
             box-shadow: 0 2px 6px rgba(44,62,80,0.08);
             cursor: help;
+            border: 1px solid white;
         }
         
         td {
@@ -153,23 +159,28 @@
             background-color: #fff;
         }
         
-        tr:hover {
+        tr:hover:not(.total-row) {
             background-color: #eaf6ff !important;
             transition: background 0.2s;
         }
         
-        .price-cell {
+        .cell{
             font-weight: bold;
             color: #2c3e50;
         }
         
-        .profit-cell {
-            color: #27ae60;
+        .highlight-cell{
+            color: #00973f;
             font-weight: bold;
+        }
+
+        .total-row .profit-cell, .total-row .coast-cell, .total-row .quantity-cell{
+            color: #ed0015 !important;
         }
         
         .export-btn {
-            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            /* background: linear-gradient(135deg, #27ae60, #2ecc71); */
+            background-color: #00973f;
             color: white;
             border: none;
             padding: 15px 30px;
@@ -196,30 +207,21 @@
             font-size: 1.1em;
         }
         
-        .add-item-btn {
-            background: linear-gradient(135deg, #9b59b6, #8e44ad);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            margin-bottom: 20px;
-        }
-        
         .product-img {
             width: 70px;
             height: 70px;
             object-fit: cover;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-            border: 2px solid #f1c40f;
+            border: 2px solid #010101;
         }
         
         .total-row {
-            background: linear-gradient(90deg, #f1c40f 60%, #ffe082 100%) !important;
+            /* background: linear-gradient(90deg, #f1c40f 60%, #ffe082 100%) !important; */
+            background: #010101 !important;
             font-weight: bold;
             font-size: 1.15em;
-            color: #2c3e50;
+            color: white;
             box-shadow: 0 2px 8px rgba(241,196,15,0.10);
         }
         
@@ -251,7 +253,7 @@
             opacity: 1;
         }
         .delete-btn {
-            background: #e74c3c;
+            background: #010101;
             color: white;
             border: none;
             border-radius: 50%;
@@ -262,7 +264,7 @@
             transition: background 0.2s;
         }
         .delete-btn:hover {
-            background: #c0392b;
+            background: #ff1900;
         }
     </style>
 </head>
@@ -380,14 +382,14 @@
 
         // Use localStorage if available
         let products = loadProducts() || [
-            { name: "DAddario Woodwinds Organic Sel. Jazz Filed SOP 2H", price: 25, quantity: 2, img: "./images/reeds-select-2h.jpg" },
-            // { name: "DAddario Woodwinds Rico Alto Sax 2.5", price: 25, quantity: 2, img: "./images/reeds-rico-2.5.jpg" },
-            { name: "DAddario Woodwinds La Voz Alto Saxophone MH", price: 25, quantity: 2, img: "./images/reeds-lavoz-mh.jpg" },
+            { name: "DAddario Woodwinds Organic Sel. Jazz Filed SOP 2H", price: 25, quantity: 3, img: "./images/reeds-select-2h.jpg" },
+            { name: "DAddario Woodwinds La Voz Alto Saxophone MH", price: 25, quantity: 3, img: "./images/reeds-lavoz-mh.jpg" },
             { name: "Rico Reed Guard IV Clar / Alto sax", price: 7.70, quantity: 3, img: "./images/reeds-guard.jpg" },
             { name: "Opti-Care Swab for Mouthpieces", price: 1.85, quantity: 3, img: "./images/swap-mouthpiece.jpg" },
             { name: "Opti-Care Swab for Alto Saxophone", price: 16.05, quantity: 3, img: "./images/swap-alto.jpg" },
-            { name: "Thomann 1045 Prof Saxophone Strap", price: 38, quantity: 2, img: "./images/strap-1.jpg" },
-            { name: "Protec LC305M Neck Strap", price: 43.85, quantity: 2, img: "./images/strap-2.jpg" },
+            { name: "Yanagisawa Body Protector Alto Sax", price: 8.75, quantity: 3, img: "./images/plug-alto.jpg" },
+            { name: "Thomann 1045 Prof Saxophone Strap", price: 38, quantity: 3, img: "./images/strap-1.jpg" },
+            { name: "Protec LC305M Neck Strap", price: 43.85, quantity: 1, img: "./images/strap-2.jpg" },
             { name: "La Tromba AG Slide and Cork Grease 15g", price: 4.75, quantity: 3, img: "./images/greaser-tromba.jpg" }
         ];
 
@@ -442,16 +444,16 @@
                     <td><img src="${product.img}" alt="${product.name}" class="product-img"></td>
                     <td style="text-align: right; padding-right: 15px;">${product.name}</td>
                     <td><input type="number" class="quantity-input" value="${product.quantity}" onchange="updateQuantity(${index}, this.value)"></td>
-                    <td class="price-cell">$${product.price.toFixed(2)}</td>
-                    <td class="price-cell">${priceEGP.toFixed(2)}</td>
-                    <td class="price-cell">$${totalCostPerItemUSD.toFixed(2)}</td>
-                    <td class="price-cell">${totalCostPerItemEGP.toFixed(2)}</td>
-                    <td class="price-cell">$${sellingPriceUSD.toFixed(2)}</td>
-                    <td class="price-cell">${sellingPriceEGP.toFixed(2)}</td>
-                    <td class="profit-cell">$${profitPerItemUSD.toFixed(2)}</td>
-                    <td class="profit-cell">${profitPerItemEGP.toFixed(2)}</td>
-                    <td class="profit-cell">$${totalProfitForProductUSD.toFixed(2)}</td>
-                    <td class="profit-cell">${totalProfitForProductEGP.toFixed(2)}</td>
+                    <td class="cell price-cell">$${product.price.toFixed(2)}</td>
+                    <td class="cell price-cell">${priceEGP.toFixed(2)}</td>
+                    <td class="cell price-cell">$${totalCostPerItemUSD.toFixed(2)}</td>
+                    <td class="cell price-cell">${totalCostPerItemEGP.toFixed(2)}</td>
+                    <td class="cell highlight-cell price-cell">$${sellingPriceUSD.toFixed(2)}</td>
+                    <td class="cell highlight-cell price-cell">${sellingPriceEGP.toFixed(2)}</td>
+                    <td class="cell profitItem-cell">$${profitPerItemUSD.toFixed(2)}</td>
+                    <td class="cell profitItem-cell">${profitPerItemEGP.toFixed(2)}</td>
+                    <td class="cell profit-cell">$${totalProfitForProductUSD.toFixed(2)}</td>
+                    <td class="cell profit-cell">${totalProfitForProductEGP.toFixed(2)}</td>
                     <td><button class="delete-btn" onclick="deleteProduct(${index})">x</button></td>
                 `;
             });
@@ -481,9 +483,9 @@
             totalRow.innerHTML = `
                 <td></td>
                 <td>Total</td>
-                <td>${totalQuantity}</td>
-                <td class="price-cell">$${totalPriceUSD.toFixed(2)}</td>
-                <td class="price-cell">${totalPriceEGP.toFixed(2)}</td>
+                <td class="quantity-cell">${totalQuantity}</td>
+                <td class="coast-cell">$${totalPriceUSD.toFixed(2)}</td>
+                <td class="coast-cell">${totalPriceEGP.toFixed(2)}</td>
                 <td class="price-cell"></td>
                 <td class="price-cell"></td>
                 <td class="price-cell"></td>
